@@ -20,7 +20,7 @@ class Api::V1::ArticlesController < ApplicationController
   end
 
   def search
-    articles = Article.where("title LIKE ?", "%#{params[:title]}%")
+    articles = Article.where("title LIKE ?", "%#{params[:query]}%")
 
     render json: articles, status: :ok
   end

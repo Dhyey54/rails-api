@@ -2,7 +2,7 @@ class Api::V1::CommentsController < ApplicationController
   before_action :set_comment, only: %i[show update destroy]
 
   def index
-    comments = Comment.all
+    comments = Comment.all.page params[:page]
 
     if comments
       render json: comments, status: :ok
@@ -20,7 +20,7 @@ class Api::V1::CommentsController < ApplicationController
   end
 
   def search
-    comments = Article.find(params[:id]).comments
+    comments = Article.find(params[:article_id]).comments
 
     render json: comments, status: :ok
   end
@@ -53,7 +53,7 @@ class Api::V1::CommentsController < ApplicationController
   private
 
   def comment_params
-    params.require(:comment).permit(:comment_content, :comment_date, :article_id)
+    params.require(:comment).permit(:comment_content, :date_of_comment, :article_id)
   end
 
   def set_comment

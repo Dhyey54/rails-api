@@ -8,7 +8,7 @@ Rails.application.routes.draw do
     namespace :v1 do
       resources :articles do
         get '/page/:page', action: :index, on: :collection
-        get 'search', to: 'articles#search'
+        get 'search/:query', to: 'articles#search', on: :collection
       end
       resources :comments do
         get '/page/:page', action: :index, on: :collection
