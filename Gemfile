@@ -15,6 +15,7 @@ gem "puma", "~> 5.0"
 # Use pagination of data
 gem 'kaminari'
 
+# Use Active Model Serializers for serilizing the json
 gem 'active_model_serializers'
 
 # Build JSON APIs with ease [https://github.com/rails/jbuilder]
